@@ -19,4 +19,14 @@ public class CalculatorService {
         }
         return a / (double) b;
     }
+
+    public Double resta(Long a, Long b) {
+        if(a==b){
+            throw new IllegalArgumentException("a y b no pueden ser iguales");
+        }
+        if(a<b){
+            throw new ArithmeticException("a no puede ser menor que b");
+        }
+        return (double) (a-b);
+    }
 }

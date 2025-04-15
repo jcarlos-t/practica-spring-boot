@@ -33,4 +33,17 @@ public class CalculatorControler {
                     .body("Error interno inesperado: "+ e.getMessage());
         }
     }
+
+    @GetMapping("/resta/{a}/{b}")
+    public ResponseEntity<?> resta(@PathVariable Long a, @PathVariable Long b) {
+        try{
+            Double result = service.resta(a,b);
+            return ResponseEntity.ok(result);
+        } catch (IllegalArgumentException e){
+            return ResponseEntity.badRequest().body("Error 400: " + e.getMessage());
+        } catch (ArithmeticException e){
+            return ResponseEntity.badRequest().body("Error 400: " + e.getMessage());
+        }
+    }
+
 }
