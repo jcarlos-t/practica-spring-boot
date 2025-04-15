@@ -9,10 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class CalculatorService {
-    @Autowired
-    private CalculatorRepository repository;
+    public Double divide (Long a, Long b) {
+        if(a==null || b==null){
+            throw new IllegalArgumentException("a y b no pueden ser nulos");
 
-    public Double divide(Long a, Long b) {
-        return (double) (a/b);
+        }
+        if(b==0){
+            throw new ArithmeticException("Division by zero no permitida");
+        }
+        return a / (double) b;
     }
 }
